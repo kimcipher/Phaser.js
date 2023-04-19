@@ -6,8 +6,17 @@ function preload() {
     this.load.image('codey', 'https://content.codecademy.com/courses/learn-phaser/physics/codey.png');
   }
   
+  const gameState = {};
+  
   function create() {
-        this.physics.add.sprite(150, 100, 'codey');
+    gameState.player = this.physics.add.sprite(225, 440, 'codey').setScale(.5);
+    
+    const platforms = this.physics.add.staticGroup();
+  
+    platforms.create(225, 510, 'platform');
+  
+    // Add your code below:
+    
   }
   
   function update() {
@@ -18,18 +27,17 @@ function preload() {
     width: 450,
     height: 500,
     backgroundColor: "b9eaff",
+    physics: {
+      default: 'arcade',
+      arcade: {
+        gravity: { y: 200 },
+        enableBody: true,
+      }
+    },
     scene: {
       preload,
       create,
       update
-    },
-    // Add the physics property below: 
-    physics: {
-      default: 'arcade',
-      arcade: {
-        gravity: { y:300},
-        debug:true
-      }
     }
   };
   
