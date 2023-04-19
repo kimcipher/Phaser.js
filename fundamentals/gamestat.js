@@ -1,24 +1,35 @@
 // Define "gameState" here
 const gameState = {};
 
+function preload() {
+    this.load.image('codey', 'https://content.codecademy.com/courses/learn-phaser/codey.png');
+}
+
 function create() {
-  // Create a circle and assign it to gameState.circle here
- gameState.circle = this.add.circle(20, 20, 5, 0xff0000);
+    gameState.codey = this.add.sprite(150, 200, 'codey')
+    // Set cursor keys here!
+     gameState.cursors = this.input.keyboard.createCursorKeys();
 }
 
 function update() {
-  // Update the circle in gameState.circle here
- gameState.circle.y += 1;
+  // Update based on keypress here!
+  if (gameState.cursors.right.isDown) {
+    gameState.codey.x += 5;
+  }
+  if (gameState.cursors.left.isDown) {
+    gameState.codey.x -= 5;
+}
 }
 
 const config = {
 	type: Phaser.AUTO,
-	width: 450,
-	height: 600,
-	backgroundColor: "#99ff99",
+	width: 400,
+	height: 500,
+	backgroundColor: "#5f2a55",
 	scene: {
     create,
-    update
+    update,
+    preload
 	}
 }
 
